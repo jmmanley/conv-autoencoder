@@ -30,7 +30,7 @@ class ConvAutoEncoder:
         # define decoder architecture
         self.decoder = keras.models.Sequential()
         self.decoder.add(keras.layers.InputLayer((output_dim,)))
-        self.decoder.add(keras.layers.Dense(int(filters[len(filters)-1] * input_shape[0]/(2**(len(filters))) * input_shape[1]/(2**(len(filters))))))
+        self.decoder.add(keras.layers.Dense(filters[len(filters)-1] * int(input_shape[0]/(2**(len(filters)))) * int(input_shape[1]/(2**(len(filters))))))
         self.decoder.add(keras.layers.Reshape((int(input_shape[0]/(2**(len(filters)))),int(input_shape[1]/(2**(len(filters)))), filters[len(filters)-1])))
         for i in range(1,len(filters)):
             self.decoder.add(keras.layers.Conv2DTranspose(filters=filters[len(filters)-i], kernel_size=kernel, strides=strideundo, activation='elu', padding='same'))
