@@ -1,1 +1,1 @@
-from .cae import cae
+from .cae import ConvAutoEncoder as cae

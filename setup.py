@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 setup(
     name='cae',
     packages=['cae'],
-    version='0.1',
+    version='0.1.1',
     license='GPLv3',
     description='A simple convolutional autoencoder',
     long_description=long_description,
