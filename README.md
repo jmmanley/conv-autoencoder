@@ -2,7 +2,33 @@
 
 An implementation of a convolutional autoencoder in python and keras.
 
-Install using `pip install cae`
+## Installation
+
+`pip install cae`
+
+## Usage
+
+```
+from cae import cae
+import numpy as np
+
+# create a fake dataset, here: 1000 random 224x224 RGB images
+images = np.random.normal(size=(1000, 224, 224, 3))
+
+latent_dim = 8 # desired latent dimensionality
+
+model = cae(images.shape[1:], latent_dim) # there are a number of **kwargs
+                                          # parameters that are likely
+                                          # worth tuning!!!
+
+# TRAIN THE NETWORK
+model.fit(images)
+
+# SAVE THE WEIGHTS FOR EASY RELOADING LATER WITH model.load_weights(path)
+model.save_weights('PATH/TO/SAVE/')
+```
+
+## Final words
 
 `cae.py` contains the implementation, which is tested on the MNIST dataset in `mnist_test.ipynb`.
 

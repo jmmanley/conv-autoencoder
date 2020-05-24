@@ -45,13 +45,9 @@ class ConvAutoEncoder:
         self.ae.compile(optimizer=optimizer, loss=lossfn)
 
 
-    def fit(self, train, test, epochs=25, callbacks=[keras.callbacks.BaseLogger()]):
+    def fit(self, x, epochs=25, callbacks=[keras.callbacks.BaseLogger()], **kwargs):
 
-        self.ae.fit(x=train, y=train, epochs=epochs, validation_data=[test, test],
-                    callbacks=callbacks)
-
-        self.mse = self.ae.evaluate(test, test)
-        print('CAE MSE on validation data: ', self.mse)
+        self.ae.fit(x=x, y=y, epochs=epochs, callbacks=callbacks, **kwargs)
 
 
     def save_weights(self, path=None, prefix=""):
