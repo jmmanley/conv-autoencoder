@@ -47,7 +47,7 @@ class ConvAutoEncoder:
 
     def fit(self, x, epochs=25, callbacks=[keras.callbacks.BaseLogger()], **kwargs):
 
-        self.ae.fit(x=x, y=y, epochs=epochs, callbacks=callbacks, **kwargs)
+        self.ae.fit(x=x, y=x, epochs=epochs, callbacks=callbacks, **kwargs)
 
 
     def save_weights(self, path=None, prefix=""):
@@ -68,3 +68,6 @@ class ConvAutoEncoder:
 
     def decode(self, codes):
         return self.decoder.predict(codes)
+
+    def predict(self, input):
+        return self.encode(input)
